@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  } from '@angular/core';
+import { HeroesService } from '../services/heroes.service';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
 })
-export class ListComponent implements OnInit {
+export class ListComponent {
+  get heroes(){
+    return this.heroreService.heroes;
+  }
+  constructor(private readonly heroreService: HeroesService){
 
-  constructor() {
-    console.log('Constructor')
   }
 
-  ngOnInit(): void {
-    console.log('ngOnInit')
-  }
 
 }

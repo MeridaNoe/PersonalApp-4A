@@ -1,0 +1,44 @@
+<h5>ADD HEROE</h5>
+<form
+  #heroeForm="ngForm"
+  (submit)="saveHeroe()"
+  class="was-validated"
+  novalidate
+>
+  <div class="form-group form-row mb-3">
+    <label for="name">Name:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      #name="ngModel"
+      [(ngModel)]="heroe.name"
+      [required]="true"
+      minlength="4"
+      placeholder="Name"
+      pattern="[A-Za-záéíóúÁÉÍÓÚñÑ.üÜ0-9]{4,45}"
+    />
+    <div *ngIf="name.invalid" class="text-danger">
+      <span *ngIf="name.errors?.['required']">Campo obligatorio</span>
+      <span *ngIf="name.errors?.['minlength]"
+        >Minimo 4 caracteres para el nombre</span
+      >
+      <span *ngIf="name.errors?.['pattern']"
+        >Solo puede contener letras, números y punto</span
+      >
+    </div>
+  </div>
+  <div class="form-group form-row mb-3">
+    <label for="power">Power:</label>
+    <input
+      type="number"
+      class="form-control"
+      id="power"
+      #power="ngModel"
+      [(ngModel)]="heroe.power"
+      [required]="true"
+    />
+    <div class="text-danger">
+    </div>
+  </div>
+</form>
